@@ -30,13 +30,13 @@ namespace DoublyTitleBarsInMaui
 					builder => builder.OnWindowCreated(window => {
 						window.AppWindow.TitleBar.ExtendsContentIntoTitleBar = false;
 
-#if WORKAROUND
-						// Workaround:
+#if WORKAROUND_BY_OVERLAPPING
+						// Workaround by overlapping:
 						if (window.Content is FrameworkElement elem) {
 							elem.Margin = new(0, -32, 0, 0);
 							Canvas.SetZIndex(elem, 0);
 						}
-#endif // WORKAROUND
+#endif // WORKAROUND_BY_OVERLAPPING
 					})
 				)
 			);

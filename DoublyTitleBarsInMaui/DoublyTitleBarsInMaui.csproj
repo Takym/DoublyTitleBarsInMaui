@@ -1,7 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<!-- <DefineConstants>$(DefineConstants);WORKAROUND</DefineConstants> -->
+		<!-- Uncomment to enable the workaround code by overlapping the redundant title bar. -->
+		<!-- <DefineConstants>$(DefineConstants);WORKAROUND_BY_OVERLAPPING</DefineConstants> -->
+
+		<!-- Uncomment to enable the workaround code by setting the custom title bar visibility as hidden with reflection. -->
+		<!-- <DefineConstants>$(DefineConstants);WORKAROUND_WITH_REFLECTION</DefineConstants> -->
 
 		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.26100.0</TargetFrameworks>
