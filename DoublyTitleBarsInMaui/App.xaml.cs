@@ -25,12 +25,28 @@ namespace DoublyTitleBarsInMaui
 
 			var page = new AppShell();
 
+			Window wnd;
+
 			if (this.Windows.Count >= 1) {
 				this.Windows[0].Page = page;
-				return base.CreateWindow(activationState);
+				wnd = base.CreateWindow(activationState);
+			} else {
+				wnd = new(page);
 			}
 
-			return new(page);
+#if false // This does not work.
+			var titleBar = new TitleBar();
+			titleBar.IsVisible = false;
+			wnd.TitleBar = titleBar;
+#endif
+
+#if false // This does not work.
+			if (wnd.TitleBar is TitleBar titleBar) {
+				titleBar.IsVisible = false;
+			}
+#endif
+
+			return wnd;
 		}
 	}
 }
